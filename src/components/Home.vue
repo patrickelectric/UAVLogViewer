@@ -181,6 +181,12 @@ export default {
                     }
                 }
             }
+            else {
+                trajectory.push([0, 0, startAltitude, 0])
+                trajectory.push([0, 0, startAltitude, 10000])
+                this.state.time_trajectory[0] = [0, 0, startAltitude, 0]
+                this.state.time_trajectory[10000] = [0, 0, startAltitude, 10000]
+            }
             return trajectory
         },
         extractAttitudes (messages) {
