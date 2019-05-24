@@ -124,7 +124,7 @@ export default {
             this.plotMission(this.state.mission)
             document.addEventListener('setzoom', this.onTimelineZoom)
             this.$eventHub.$on('rangeChanged', this.onRangeChanged)
-            if (this.$route.query.hasOwnProperty('cam')) {
+/*            if (this.$route.query.hasOwnProperty('cam')) {
                 let data = this.$route.query.cam.split(',')
                 let position = new Cesium.Cartesian3(
                     parseFloat(data[0]),
@@ -147,7 +147,7 @@ export default {
                 this.viewer.camera.up = up
                 this.viewer.camera.position = position
                 this.viewer.camera.direction = direction
-            }
+            }*/
             this.state.map_loading = false
             setTimeout(this.updateTimelineColors, 500)
         }.bind(this))
