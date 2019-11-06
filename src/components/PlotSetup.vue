@@ -14,7 +14,7 @@
                     <select v-model.number="field.axis">
                         <option v-bind:key="'axisnumber'+axis" v-for="axis in state.allAxis">{{axis}}</option>
                     </select>
-                    <select :style="{color:  field.color}" v-model="field.color">
+                    <select :style="{color: field.color}" v-model="field.color">
                         <option
                             v-bind:key="'axisColor'+color"
                             :style="{color: color}"
@@ -117,8 +117,8 @@ export default {
     }
 
     .nav-side-menu li:hover {
-        border-left: 3px solid #d19b3d;
-        background-color: #4f5b69;
+        border-left: 3px solid #d18c3d;
+        background-color: #69614f;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
@@ -155,25 +155,6 @@ export default {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
         background-color: #1c437f;
-    }
-
-    .tabholder a {
-        border-top: 1px solid white;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
-        border-radius: 3px;
-        padding-left: 5px;
-        padding-right: 5px;
-        font-weight: bold;
-        background-color: #2E353D;
-    }
-
-    .tabholder a:hover {
-        background-color: #4f5b69;
-        -webkit-transition: all 1s ease;
-        -moz-transition: all 1s ease;
-        -o-transition: all 1s ease;
-        transition: all 1s ease;
     }
 
     ul.colorpicker {

@@ -1,13 +1,13 @@
 <template>
     <div class="nav-side-menu col-sm-4 col-md-3 col-lg-2">
-        <div class="brand">TLog Viewer</div>
+        <h1 class="brand"> <b>TLog</b>viewer<i class="fas fa-plane"></i></h1>
         <ul>
             <div class="tabholder">
-                <a :class="selected==='home' ? 'selected' : ''" @click="selected='home'">HOME</a>
+                <a :class="selected==='home' ? 'selected' : ''" @click="selected='home'"> <i class="fas fa-home"></i> Home </a>
                 <a :class="selected==='plot' ? 'selected' : ''" @click="selected='plot'"
-                   v-if="state.processDone">PLOT</a>
+                   v-if="state.processDone"> <i class="fas fa-pen"></i> Plot </a>
                 <a :class="selected==='3d' ? 'selected' : ''" @click="selected='3d'"
-                   v-if="state.map_available && state.show_map">3D</a>
+                   v-if="state.map_available && state.show_map">  <i class="fas fa-cube"></i> 3D </a>
                 <a :class="selected==='3d' ? 'selected' : ''" @click="state.show_map=trueselected='3d'"
                    v-if="state.map_available && !state.show_map">3D</a>
             </div>
@@ -81,24 +81,21 @@ export default {
 <style>
     .nav-side-menu {
         overflow-x: hidden;
-        font-family: verdana;
-        font-size: 14px;
-        font-weight: 200;
-        background-color: #2e353d;
+        padding: 0;
+        background-color: #2e2e2e;
         position: fixed;
         top: 0px;
-        /*width: 300px;*/
         height: 100%;
-        color: #e1ffff;
+        color: #fffffff1;
     }
 
     .nav-side-menu .brand {
-        background-color: #23282e;
+        background-color: #585858;
+        color: #eeeeee;
         line-height: 50px;
         display: block;
         text-align: center;
-        font-size: 17px;
-        font-weight: bold;
+        font-size: 25px;
     }
 
     .nav-side-menu .toggle-btn {
@@ -129,7 +126,7 @@ export default {
 
     .nav-side-menu ul .sub-menu li.active a,
     .nav-side-menu li .sub-menu li.active a {
-        color: #d19b3d;
+        color: #cc8812;
     }
 
     .nav-side-menu ul .sub-menu li,
@@ -148,7 +145,6 @@ export default {
 
     .nav-side-menu ul .sub-menu li:before,
     .nav-side-menu li .sub-menu li:before {
-        font-family: FontAwesome;
         content: "\f105";
         display: inline-block;
         padding-left: 10px;
@@ -175,7 +171,7 @@ export default {
 
     .nav-side-menu li:hover {
         border-left: 3px solid #d19b3d;
-        background-color: #4f5b69;
+        background-color: #555d66;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
@@ -258,37 +254,35 @@ export default {
 
     .tabholder {
         display: flex;
-        justify-content: space-between;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        border-bottom: 1px solid white;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        overflow: hidden;
+        padding-bottom: 25px;
     }
 
     .tabholder a {
-        border-top: 1px solid white;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
-        border-radius: 3px;
-        padding-left: 5px;
-        padding-right: 5px;
-        font-weight: bold;
-        background-color: #2E353D;
+        float: left;
+        padding: 2px 15px 2px 5px;
     }
 
     a.selected {
-        margin-bottom: -1px;
+        background-color: #727171;
     }
 
     .tabholder a:hover {
-        background-color: #4f5b69;
+        background-color: #686868;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
-        -ms-transition: all 1s ease;
         transition: all 1s ease;
     }
 
     label {
         display: block;
+    }
+
+    .fa-plane {
+        margin: 8px;
+        font-size: 18px;
     }
 </style>
