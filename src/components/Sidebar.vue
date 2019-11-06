@@ -33,27 +33,27 @@
                     <!--<i class="fas fa-eye-slash fa-lg"></i> Hide 3D View</a>-->
                     <!--</li>-->
                     <div>
-                        <label>Camera</label>
+                        <label><i class="fas fa-camera"></i> Camera</label>
                         <select class="cesium-button" v-model="state.cameraType">
                             <option value="free">Free</option>
                             <option value="follow">Follow</option>
                         </select>
                     </div>
                     <div>
-                        <label><input type="checkbox" v-model="state.showWaypoints">Waypoints</label>
-                        <label><input type="checkbox" v-model="state.showTrajectory">Trajectory</label>
+                        <label><input type="checkbox" v-model="state.showWaypoints"> Waypoints</label>
+                        <label><input type="checkbox" v-model="state.showTrajectory"> Trajectory</label>
                     </div>
                     <div v-if="state.processDone">
-                        <label v-if="state.params"><input type="checkbox" v-model="state.show_params">Show
+                        <label v-if="state.params"><input type="checkbox" v-model="state.show_params"> Show
                             Parameters</label>
-                        <label><input type="checkbox" v-model="state.show_radio">Show Radio Sticks</label>
-                        <label v-if="state.textMessages"><input type="checkbox" v-model="state.show_messages">Show
+                        <label><input type="checkbox" v-model="state.show_radio"> Show Radio Sticks</label>
+                        <label v-if="state.textMessages"><input type="checkbox" v-model="state.show_messages"> Show
                             Messages</label>
                     </div>
                     <div>
-                        <label>Wingspan (m)
+                        <label> Wingspan (m)
                             <input max="15" min="0.1" step="0.01" type="range" v-model="state.modelScale">
-                            <input size="5" type="text" v-model="state.modelScale">
+                            <input class="wingspan-text" size="5" type="text" v-model="state.modelScale">
                         </label>
                     </div>
                 </div>
@@ -79,6 +79,9 @@ export default {
 }
 </script>
 <style>
+
+/* NAV SIDE MENU */
+
     .nav-side-menu {
         overflow-x: hidden;
         padding: 0;
@@ -88,16 +91,7 @@ export default {
         height: 100%;
         color: #fffffff1;
     }
-
-    .nav-side-menu .brand {
-        background-color: #585858;
-        color: #eeeeee;
-        line-height: 50px;
-        display: block;
-        text-align: center;
-        font-size: 25px;
-    }
-
+    
     .nav-side-menu .toggle-btn {
         display: none;
     }
@@ -179,58 +173,6 @@ export default {
         transition: all 1s ease;
     }
 
-    @media (max-width: 767px) {
-        .nav-side-menu {
-            position: fixed;
-            width: 100%;
-            margin-bottom: 10px;
-            height: auto;
-            max-height: 100%;
-            z-index: 1002;
-        }
-
-        .nav-side-menu .toggle-btn {
-            display: block;
-            cursor: pointer;
-            position: absolute;
-            right: 10px;
-            top: 0px;
-            z-index: 10 !important;
-            padding: 3px;
-            background-color: #ffffff;
-            color: #000;
-            height: auto;
-            width: 40px;
-            text-align: center;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-        }
-
-        .brand {
-            text-align: left !important;
-            font-size: 22px;
-            padding-left: 20px;
-            line-height: 50px !important;
-        }
-
-        main {
-            height: 90%;
-            margin-top: 50px;
-        }
-    }
-
-    @media (min-width: 767px) {
-        .nav-side-menu .menu-list .menu-content {
-            display: block;
-            height: 100%;
-        }
-
-        main {
-            height: 100%;
-        }
-    }
-
     i {
         margin: 10px;
     }
@@ -252,12 +194,31 @@ export default {
         margin-right: 0;
     }
 
+    /* BRAND */
+
+    .fa-plane {
+        margin: 8px;
+        font-size: 18px;
+    }
+         
+    .brand {
+        text-align: left !important;
+        font-size: 22px;
+        padding-left: 20px;
+        line-height: 50px !important;
+        background-color: #585858;
+        color: #eeeeee;
+        display: block;
+    }
+
+    /* TABHOLDER */
+
     .tabholder {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-evenly;
         overflow: hidden;
-        padding-bottom: 25px;
+        padding-bottom: 10px;
     }
 
     .tabholder a {
@@ -277,12 +238,57 @@ export default {
         transition: all 1s ease;
     }
 
+    /* LABELS */
+
     label {
         display: block;
+        padding-left: 8px;
     }
 
-    .fa-plane {
-        margin: 8px;
-        font-size: 18px;
+    /* MEDIA QUERIES */
+
+    @media (max-width: 767px) {
+        .nav-side-menu {
+            position: fixed;
+            width: 100%;
+            margin-bottom: 10px;
+            height: auto;
+            max-height: 100%;
+            z-index: 1002;
+        }
+
+        .nav-side-menu .toggle-btn {
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            z-index: 10 !important;
+            padding: 3px;
+            background-color: #ffffffde;
+            color: rgb(58, 58, 58);
+            height: auto;
+            width: 40px;
+            text-align: center;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+        }
+
+        main {
+            height: 90%;
+            margin-top: 50px;
+        }
+    }
+
+    @media (min-width: 767px) {
+        .nav-side-menu .menu-list .menu-content {
+            display: block;
+            height: 100%;
+        }
+
+        main {
+            height: 100%;
+        }
     }
 </style>
