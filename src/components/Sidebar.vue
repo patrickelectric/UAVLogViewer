@@ -179,6 +179,8 @@ export default {
         margin: 10px;
     }
 
+    /* SCROLLBAR */
+
     ::-webkit-scrollbar {
         width: 12px;
         background-color: rgba(0, 0, 0, 0);
