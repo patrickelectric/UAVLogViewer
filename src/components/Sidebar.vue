@@ -58,7 +58,7 @@
                     <!-- WINGSPAN -->
                     <div>
                         <label><i class="fa fa-fighter-jet"></i> Wingspan (m)
-                            <input max="15" min="0.1" step="0.01" type="range" 
+                            <input max="15" min="0.1" step="0.01" type="range"
                             class="custom-range" v-model="state.modelScale">
                             <input class="wingspan-text" size="5" type="text" v-model="state.modelScale">
                         </label>
