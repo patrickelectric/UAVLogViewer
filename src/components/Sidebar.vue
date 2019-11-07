@@ -5,16 +5,20 @@
         <!-- TABHOLDER -->
         <ul>
             <div class="tabholder">
+                <!-- Home -->
                 <a :class="selected === 'home' ? 'selected' : ''" @click="selected='home'">
                 <i class="fas fa-home"></i> Home </a>
+                <!-- Plot -->
                 <a :class="selected === 'plot' ? 'selected' : ''" @click="selected='plot'"
                    v-if="state.processDone"> <i class="fas fa-pen"></i> Plot </a>
+                <!-- 3D -->
                 <a :class="selected ==='3d' ? 'selected' : ''" @click="selected='3d'"
                    v-if="state.map_available && state.show_map">  <i class="fas fa-cube"></i> 3D </a>
                 <a :class="selected ==='3d' ? 'selected' : ''" @click="state.show_map=trueselected='3d'"
                    v-if="state.map_available && !state.show_map">3D</a>
             </div>
         </ul>
+        <!-- TOGGLE MENU -->
         <i class="fa fa-bars fa-2x toggle-btn" v-b-toggle.menucontent></i>
         <div class="menu-list">
             <b-collapse class="menu-content collapse out" id="menucontent" visible>
@@ -35,6 +39,7 @@
                     <!--<a class="section">-->
                     <!--<i class="fas fa-eye-slash fa-lg"></i> Hide 3D View</a>-->
                     <!--</li>-->
+
                     <!-- CAMERA -->
                     <div>
                         <label><i class="fas fa-camera"></i> Camera</label>
@@ -184,7 +189,7 @@ export default {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-        background-color: #1c437f;
+        background-color: #864920;
     }
 
     .custom-control-inline {
