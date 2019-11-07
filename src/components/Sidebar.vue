@@ -1,14 +1,17 @@
 <template>
+<!-- HEADER -->
     <div class="nav-side-menu col-sm-4 col-md-3 col-lg-2">
         <h1 class="brand"> <b>TLog</b>viewer<i class="fas fa-plane"></i></h1>
+        <!-- TABHOLDER -->
         <ul>
             <div class="tabholder">
-                <a :class="selected==='home' ? 'selected' : ''" @click="selected='home'"> <i class="fas fa-home"></i> Home </a>
-                <a :class="selected==='plot' ? 'selected' : ''" @click="selected='plot'"
+                <a :class="selected === 'home' ? 'selected' : ''" @click="selected='home'">
+                <i class="fas fa-home"></i> Home </a>
+                <a :class="selected === 'plot' ? 'selected' : ''" @click="selected='plot'"
                    v-if="state.processDone"> <i class="fas fa-pen"></i> Plot </a>
-                <a :class="selected==='3d' ? 'selected' : ''" @click="selected='3d'"
+                <a :class="selected ==='3d' ? 'selected' : ''" @click="selected='3d'"
                    v-if="state.map_available && state.show_map">  <i class="fas fa-cube"></i> 3D </a>
-                <a :class="selected==='3d' ? 'selected' : ''" @click="state.show_map=trueselected='3d'"
+                <a :class="selected ==='3d' ? 'selected' : ''" @click="state.show_map=trueselected='3d'"
                    v-if="state.map_available && !state.show_map">3D</a>
             </div>
         </ul>
@@ -32,6 +35,7 @@
                     <!--<a class="section">-->
                     <!--<i class="fas fa-eye-slash fa-lg"></i> Hide 3D View</a>-->
                     <!--</li>-->
+                    <!-- CAMERA -->
                     <div>
                         <label><i class="fas fa-camera"></i> Camera</label>
                         <select class="cesium-button" v-model="state.cameraType">
@@ -39,6 +43,7 @@
                             <option value="follow">Follow</option>
                         </select>
                     </div>
+                    <!-- CHECKBOXES -->
                     <div>
                         <label><input type="checkbox" v-model="state.showWaypoints"> Waypoints</label>
                         <label><input type="checkbox" v-model="state.showTrajectory"> Trajectory</label>
@@ -50,9 +55,11 @@
                         <label v-if="state.textMessages"><input type="checkbox" v-model="state.show_messages"> Show
                             Messages</label>
                     </div>
+                    <!-- WINGSPAN -->
                     <div>
-                        <label> Wingspan (m)
-                            <input max="15" min="0.1" step="0.01" type="range" v-model="state.modelScale">
+                        <label><i class="fa fa-fighter-jet"></i> Wingspan (m)
+                            <input max="15" min="0.1" step="0.01" type="range" 
+                            class="custom-range" v-model="state.modelScale">
                             <input class="wingspan-text" size="5" type="text" v-model="state.modelScale">
                         </label>
                     </div>
@@ -62,6 +69,7 @@
     </div>
 </template>
 <script>
+/* eslint-disable */
 import Dropzone from './SideBarFileManager'
 import MessageMenu from './SideBarMessageMenu'
 import {store} from './Globals.js'
@@ -91,10 +99,12 @@ export default {
         height: 100%;
         color: #fffffff1;
     }
-    
+
     .nav-side-menu .toggle-btn {
         display: none;
     }
+
+    /* UL/LI */
 
     .nav-side-menu ul,
     .nav-side-menu li {
@@ -103,19 +113,6 @@ export default {
         margin: 0px;
         line-height: 35px;
         cursor: pointer;
-        /*
-          .collapsed{
-             .arrow:before{
-                       font-family: FontAwesome;
-                       content: "\f053";
-                       display: inline-block;
-                       padding-left:10px;
-                       padding-right: 10px;
-                       vertical-align: middle;
-                       float:right;
-                  }
-           }
-      */
     }
 
     .nav-side-menu ul .sub-menu li.active a,
@@ -202,10 +199,10 @@ export default {
     }
          
     .brand {
-        text-align: left !important;
+        text-align: center;
         font-size: 22px;
         padding-left: 20px;
-        line-height: 50px !important;
+        line-height: 50px;
         background-color: #585858;
         color: #eeeeee;
         display: block;
@@ -242,7 +239,14 @@ export default {
 
     label {
         display: block;
-        padding-left: 8px;
+        padding: 6px;
+    }
+
+    .wingspan-text {
+        width: 20%;
+        border: none;
+        border-radius: 3px;
+        background-color: rgb(175, 177, 175);
     }
 
     /* MEDIA QUERIES */
