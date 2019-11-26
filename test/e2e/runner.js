@@ -2,10 +2,6 @@
 // 1. start the dev server using production config
 process.env.NODE_ENV = 'testing'
 
-const webpack = require('webpack')
-const DevServer = require('webpack-dev-server')
-
-const webpackConfig = require('../../build/webpack.prod.conf')
 const devConfigPromise = require('../../build/webpack.dev.conf')
 var exec = require('child_process').exec
 
@@ -29,12 +25,11 @@ devConfigPromise.then(devConfig => {
     opts = opts.concat(['--config', 'test/e2e/nightwatch.conf.js'])
   }
   if (opts.indexOf('--env') === -1) {
-    opts = opts.concat(['--env', 'firefox'])
+    opts = opts.concat(['--env', 'chromeHeadless'])
   }
 
   const spawn = require('cross-spawn')
   const runner = spawn('./node_modules/.bin/nightwatch', opts, { stdio: 'inherit' })
-
   runner.on('exit', function (code) {
     exec('pkill -9 -f http.server')
     process.exit(code)

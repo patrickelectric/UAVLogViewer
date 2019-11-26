@@ -10,7 +10,7 @@ module.exports = {
 
         browser
             .url(devServer)
-            .waitForElementVisible('#drop_zone', 5000)
+            .waitForElementVisible('#drop_zone', 50000)
             .assert.elementPresent('.fa-play')
             .end()
     }
