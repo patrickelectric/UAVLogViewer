@@ -9,6 +9,7 @@ module.exports = {
 
     selenium: {
         start_process: true,
+        check_process_delay: 5000,
         server_path: require('selenium-server').path,
         host: '127.0.0.1',
         port: 4444,
