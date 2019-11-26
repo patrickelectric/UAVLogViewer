@@ -7,16 +7,14 @@ const DevServer = require('webpack-dev-server')
 
 const webpackConfig = require('../../build/webpack.prod.conf')
 const devConfigPromise = require('../../build/webpack.dev.conf')
-
-let server
+var exec = require('child_process').exec
 
 devConfigPromise.then(devConfig => {
-  const devServerOptions = devConfig.devServer
-  const compiler = webpack(webpackConfig)
-  server = new DevServer(compiler, devServerOptions)
-  const port = devServerOptions.port
-  const host = devServerOptions.host
-  return server.listen(port, host)
+    exec('cd $(pwd)/dist && python3 -m http.server 8080', function callback(error, stdout, stderr){
+        console.log(error)
+        console.log(stdout)
+        console.log(stderr)
+    });
 })
 .then(() => {
   // 2. run the nightwatch test suite against it
@@ -31,19 +29,19 @@ devConfigPromise.then(devConfig => {
     opts = opts.concat(['--config', 'test/e2e/nightwatch.conf.js'])
   }
   if (opts.indexOf('--env') === -1) {
-    opts = opts.concat(['--env', 'chrome'])
+    opts = opts.concat(['--env', 'firefox'])
   }
 
   const spawn = require('cross-spawn')
   const runner = spawn('./node_modules/.bin/nightwatch', opts, { stdio: 'inherit' })
 
   runner.on('exit', function (code) {
-    server.close()
+    exec('pkill -9 -f http.server')
     process.exit(code)
   })
 
   runner.on('error', function (err) {
-    server.close()
+      exec('pkill -9 -f http.server')
     throw err
   })
 })
